@@ -1,0 +1,11 @@
+version: '2'
+services:
+  trainingmanagementsystem-postgresql:
+    image: postgres:12.1
+    # volumes:
+    #     - ~/volumes/jhipster/TrainingManagementSystem/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=TrainingManagementSystem
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432
