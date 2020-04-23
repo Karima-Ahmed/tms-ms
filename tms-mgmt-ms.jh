@@ -1,0 +1,46 @@
+
+/**
+* TrainingClass (tms_training_class) entity.
+*/
+entity TrainingClass (tms_training_class) {
+	slotId Long
+    descEn String
+    descAr String
+    timeFrom Instant
+    timeTo Instant
+    centerId Long
+    faclitatorId Long
+}
+
+/**
+* TrainingType (tms_training_type) entity.
+*/
+entity TrainingType (tms_training_type) {
+	nameEn String,
+    nameAr String
+}
+
+/**
+* Attendees (tms_attendees) entity.
+*/
+entity Attendees (tms_attendees) {
+    applicantId Long
+}
+
+relationship ManyToOne {
+    TrainingClass {trainingType} to TrainingType
+    Attendees {trainingClass} to TrainingClass
+}
+
+dto all with mapstruct
+
+service all with serviceImpl
+
+filter all
+
+paginate all with pagination
+
+clientRootFolder all with tms-ms
+
+
+
