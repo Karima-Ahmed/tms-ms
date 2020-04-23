@@ -1,0 +1,55 @@
+{
+    "name": "TrainingClass",
+    "fields": [
+        {
+            "fieldName": "slotId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "descEn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descAr",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timeFrom",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "timeTo",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "centerId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "faclitatorId",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "trainingType",
+            "otherEntityRelationshipName": "trainingClass",
+            "relationshipName": "trainingType",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200423152700",
+    "javadoc": "TrainingClass (tms_training_class) entity.",
+    "entityTableName": "tms_training_class",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "tms-ms",
+    "applications": "*",
+    "microserviceName": "TrainingManagementSystem"
+}
