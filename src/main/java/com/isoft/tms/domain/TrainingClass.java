@@ -3,6 +3,7 @@ package com.isoft.tms.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -22,10 +23,12 @@ public class TrainingClass extends AbstractAuditingEntity implements Serializabl
     @SequenceGenerator(name = "trcls_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "slot_id")
+    @NotNull
+    @Column(name = "slot_id", nullable = false)
     private Long slotId;
 
-    @Column(name = "desc_en")
+    @NotNull
+    @Column(name = "desc_en", nullable = false)
     private String descEn;
 
     @Column(name = "desc_ar")

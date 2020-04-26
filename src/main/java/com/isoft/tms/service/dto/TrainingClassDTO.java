@@ -2,6 +2,7 @@ package com.isoft.tms.service.dto;
 
 import io.swagger.annotations.ApiModel;
 import java.time.Instant;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -13,8 +14,10 @@ public class TrainingClassDTO implements Serializable {
     
     private Long id;
 
+    @NotNull
     private Long slotId;
 
+    @NotNull
     private String descEn;
 
     private String descAr;

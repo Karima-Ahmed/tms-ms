@@ -1,6 +1,7 @@
 package com.isoft.tms.service.dto;
 
 import io.swagger.annotations.ApiModel;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,6 +13,7 @@ public class AttendeesDTO implements Serializable {
     
     private Long id;
 
+    @NotNull
     private Long applicantId;
 
 

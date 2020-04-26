@@ -132,6 +132,25 @@ public class AttendeesResourceIT {
 
     @Test
     @Transactional
+    public void checkApplicantIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = attendeesRepository.findAll().size();
+        // set the field null
+        attendees.setApplicantId(null);
+
+        // Create the Attendees, which fails.
+        AttendeesDTO attendeesDTO = attendeesMapper.toDto(attendees);
+
+        restAttendeesMockMvc.perform(post("/api/attendees").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(attendeesDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Attendees> attendeesList = attendeesRepository.findAll();
+        assertThat(attendeesList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllAttendees() throws Exception {
         // Initialize the database
         attendeesRepository.saveAndFlush(attendees);

@@ -2,6 +2,7 @@ package com.isoft.tms.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -20,7 +21,8 @@ public class TrainingType extends AbstractAuditingEntity implements Serializable
     @SequenceGenerator(name = "trtyp_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "name_en")
+    @NotNull
+    @Column(name = "name_en", nullable = false)
     private String nameEn;
 
     @Column(name = "name_ar")

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -56,7 +57,7 @@ public class TrainingTypeResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/training-types")
-    public ResponseEntity<TrainingTypeDTO> createTrainingType(@RequestBody TrainingTypeDTO trainingTypeDTO) throws URISyntaxException {
+    public ResponseEntity<TrainingTypeDTO> createTrainingType(@Valid @RequestBody TrainingTypeDTO trainingTypeDTO) throws URISyntaxException {
         log.debug("REST request to save TrainingType : {}", trainingTypeDTO);
         if (trainingTypeDTO.getId() != null) {
             throw new BadRequestAlertException("A new trainingType cannot already have an ID", ENTITY_NAME, "idexists");
@@ -77,7 +78,7 @@ public class TrainingTypeResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/training-types")
-    public ResponseEntity<TrainingTypeDTO> updateTrainingType(@RequestBody TrainingTypeDTO trainingTypeDTO) throws URISyntaxException {
+    public ResponseEntity<TrainingTypeDTO> updateTrainingType(@Valid @RequestBody TrainingTypeDTO trainingTypeDTO) throws URISyntaxException {
         log.debug("REST request to update TrainingType : {}", trainingTypeDTO);
         if (trainingTypeDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

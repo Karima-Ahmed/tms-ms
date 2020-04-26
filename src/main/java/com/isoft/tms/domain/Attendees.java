@@ -3,6 +3,7 @@ package com.isoft.tms.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -21,7 +22,8 @@ public class Attendees extends AbstractAuditingEntity implements Serializable {
     @SequenceGenerator(name = "attnd_seq", allocationSize = 1)
     private Long id;
 
-    @Column(name = "applicant_id")
+    @NotNull
+    @Column(name = "applicant_id", nullable = false)
     private Long applicantId;
 
     @ManyToOne

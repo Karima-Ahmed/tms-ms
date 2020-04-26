@@ -172,6 +172,44 @@ public class TrainingClassResourceIT {
 
     @Test
     @Transactional
+    public void checkSlotIdIsRequired() throws Exception {
+        int databaseSizeBeforeTest = trainingClassRepository.findAll().size();
+        // set the field null
+        trainingClass.setSlotId(null);
+
+        // Create the TrainingClass, which fails.
+        TrainingClassDTO trainingClassDTO = trainingClassMapper.toDto(trainingClass);
+
+        restTrainingClassMockMvc.perform(post("/api/training-classes").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(trainingClassDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<TrainingClass> trainingClassList = trainingClassRepository.findAll();
+        assertThat(trainingClassList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
+    public void checkDescEnIsRequired() throws Exception {
+        int databaseSizeBeforeTest = trainingClassRepository.findAll().size();
+        // set the field null
+        trainingClass.setDescEn(null);
+
+        // Create the TrainingClass, which fails.
+        TrainingClassDTO trainingClassDTO = trainingClassMapper.toDto(trainingClass);
+
+        restTrainingClassMockMvc.perform(post("/api/training-classes").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(trainingClassDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<TrainingClass> trainingClassList = trainingClassRepository.findAll();
+        assertThat(trainingClassList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllTrainingClasses() throws Exception {
         // Initialize the database
         trainingClassRepository.saveAndFlush(trainingClass);

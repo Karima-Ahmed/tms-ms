@@ -136,6 +136,25 @@ public class TrainingTypeResourceIT {
 
     @Test
     @Transactional
+    public void checkNameEnIsRequired() throws Exception {
+        int databaseSizeBeforeTest = trainingTypeRepository.findAll().size();
+        // set the field null
+        trainingType.setNameEn(null);
+
+        // Create the TrainingType, which fails.
+        TrainingTypeDTO trainingTypeDTO = trainingTypeMapper.toDto(trainingType);
+
+        restTrainingTypeMockMvc.perform(post("/api/training-types").with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(trainingTypeDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<TrainingType> trainingTypeList = trainingTypeRepository.findAll();
+        assertThat(trainingTypeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllTrainingTypes() throws Exception {
         // Initialize the database
         trainingTypeRepository.saveAndFlush(trainingType);

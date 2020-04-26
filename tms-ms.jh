@@ -3,12 +3,12 @@
 * TrainingClass (tms_training_class) entity.
 */
 entity TrainingClass (tms_training_class) {
-	slotId Long
-    descEn String
+	slotId Long required
+    descEn String required
     descAr String
     timeFrom Instant
     timeTo Instant
-    centerId Long
+    centerId Long 
     faclitatorId Long
 }
 
@@ -16,7 +16,7 @@ entity TrainingClass (tms_training_class) {
 * TrainingType (tms_training_type) entity.
 */
 entity TrainingType (tms_training_type) {
-	nameEn String,
+	nameEn String required
     nameAr String
 }
 
@@ -24,7 +24,7 @@ entity TrainingType (tms_training_type) {
 * Attendees (tms_attendees) entity.
 */
 entity Attendees (tms_attendees) {
-    applicantId Long
+    applicantId Long required
 }
 
 relationship ManyToOne {

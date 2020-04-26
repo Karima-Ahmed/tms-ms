@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "applicantId",
-            "fieldType": "Long"
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "relationships": [

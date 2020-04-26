@@ -3,7 +3,10 @@
     "fields": [
         {
             "fieldName": "nameEn",
-            "fieldType": "String"
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
         },
         {
             "fieldName": "nameAr",
