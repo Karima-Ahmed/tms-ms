@@ -11,13 +11,13 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "tms_training_type")
-public class TrainingType implements Serializable {
+public class TrainingType extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "trtyp_seq")
+    @SequenceGenerator(name = "trtyp_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "name_en")

@@ -8,7 +8,7 @@
     "serverPort": 8081,
     "serviceDiscoveryType": "eureka",
     "authenticationType": "uaa",
-    "uaaBaseName": "../uaa",
+    "uaaBaseName": "/uaa",
     "cacheProvider": "ehcache",
     "enableHibernateCache": false,
     "websocket": false,
